@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useTrail, animated } from "react-spring";
@@ -11,8 +12,7 @@ const ProjectList = () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/projects`);
         setProjects(response.data);
-        console.log('projects', response.data)
-        console.log('object', )
+       
       } catch (error) {
         console.error("Error fetching projects", error);
       } finally {
@@ -30,6 +30,7 @@ const ProjectList = () => {
     delay: 300,
     config: { tension: 200, friction: 20 },
   });
+  // console.log('object', projects)
 
   return (
   
@@ -44,28 +45,29 @@ const ProjectList = () => {
           <p className="text-center text-gray-500">Project is empty</p> // No projects message
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 pb-10">
-            {trail.map((style, index) => (
-              <animated.div key={projects[index].id} style={style}>
-                <div className="card bg-sky-500 shadow-xl">
+            {projects.map((project, index) => (
+              // console.log(project)
+              <animated.div key={project.id} style={trail[index]}>
+                <div className="card grid grid-cols-1 w-full h-full bg-sky-500 shadow-xl">
                   {projects[index].image && (
                     <figure className="h-80 p-2">
                       <img
-                        src={projects[index].image}
-                        alt={projects[index].title}
+                        src={project.image}
+                        alt={project.title}
                         className="w-full h-full object-cover rounded-lg"
                       />
                     </figure>
                   )}
-                  <div className="card-body">
-                    <h2 className="card-title">{projects[index].title}</h2>
-                    <p>{projects[index].description}</p>
+                  <div className="card-body ">
+                    <h2 className="card-title">{project.title}</h2>
+                    <p>{project.description}</p>
                     <a
-                      href={projects[index].url}
+                      href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-700 underline"
                     >
-                      {projects[index].url}
+                      {project.url}
                     </a>
                   </div>
                 </div>

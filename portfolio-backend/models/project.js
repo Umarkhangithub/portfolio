@@ -20,8 +20,3 @@ const tes = new mongoose.Schema({
 
 const Name = mongoose.model('Name', tes);
 export default Project;
-
-
-
-
-

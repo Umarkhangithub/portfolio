@@ -7,16 +7,16 @@ import Project from '../models/project.js';
 const router = express.Router();
 
 // Configure Multer for file uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "uploads/");
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, `${Date.now()}-${file.originalname}`);
+//   },
+// });
 
-const upload = multer({ storage });
+// const upload = multer({ storage });
 
 
 
@@ -34,12 +34,12 @@ router.get("/", async (req, res) => {
 
 
 // Route to add a project with an image
-router.post("/add", upload.single("image"), async (req, res) => {
+router.post("/add",async (req, res) => {
   try {
-    const { title, description, url } = req.body;
-    const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
+    const { title, description, url, image } = req.body;
+    // const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
 
-    const project = new Project({ title, description, url, image: imagePath });
+    const project = new Project({ title, description, url, image });
 
     await project.save();
     res.status(201).json({ message: "Project added successfully", project });
@@ -69,5 +69,3 @@ router.delete("/:id", async (req, res) => {
 
 
 export default router
-
-
