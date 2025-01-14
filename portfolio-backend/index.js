@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './dbConnection/connectDb.js';
@@ -9,10 +10,11 @@ dotenv.config(); // Load environment variables
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const DATABASE_URL = process.env.DATABASE_URL || 'mongodb://127.0.0.1:27017/portfolio';
+const DATABASE_URL = process.env.DATABASE_URL;
 
 // Connect to the database
 connectDB(DATABASE_URL);
+
 
 
 // Middleware

@@ -93,9 +93,9 @@ const Header = () => {
           </div>
           <div className="hidden lg:block">
             <ButtonComponent>
-              <NavLink to="/addproject">Add Project</NavLink>
+              {/* <NavLink to="/addproject">Add Project</NavLink> */}
+              <NavLink to="/userauth">Add Project</NavLink>
             </ButtonComponent>
-             {/* userauth */}
           </div>
         </div>
       </div>

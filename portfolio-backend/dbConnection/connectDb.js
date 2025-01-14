@@ -15,13 +15,19 @@ const connectDB = async (DATABASE_URL) =>{
     } catch (error) {
         // console.log(`Error: ${error.message}`.red.underline.bold)
         // process.exit(1)
-        console.log(' not connected',error)
+        console.log(' not connected',error.message)
     }
 
 
     
 }
+
+
+
+
 export default connectDB;
+
+
 // import mongoose from 'mongoose';
 
 // const connectDB = async (DATABASE_URL) => {

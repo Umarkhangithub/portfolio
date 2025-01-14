@@ -32,7 +32,7 @@ const AddProject = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${import.meta.env.REACT_APP_BACKEND_URL}/api/projects/add`, formData, {
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/projects/add`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       toast.success(response.data.message);
@@ -49,7 +49,7 @@ const AddProject = () => {
   }, []);
   const fetchProjects = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.REACT_APP_BACKEND_URL}/api/projects`);
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/projects`);
       setProjects(response.data);
     } catch (error) {
       console.error("Error fetching projects", error);
@@ -58,7 +58,7 @@ const AddProject = () => {
 
   const deleteProject = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.REACT_APP_BACKEND_URL}/api/projects/${id}`);
+      await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/projects/${id}`);
       toast.success("Project deleted successfully!");
       fetchProjects(); // Re-fetch projects to update the list
     } catch (error) {

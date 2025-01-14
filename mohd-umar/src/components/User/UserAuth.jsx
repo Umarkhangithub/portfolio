@@ -34,7 +34,7 @@ const [isLogedIn, setIsLogedIn] = useState(false);
   }, []);
   const fetchUser = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.REACT_APP_BACKEND_URL}/api/auths`);
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/auths`);
       setUser(response.data);
     } catch (error) {
       console.error("Error fetching projects", error);
@@ -68,19 +68,19 @@ const [isLogedIn, setIsLogedIn] = useState(false);
         toast.error("password not match");
         return;
       }
-      // if (
-      //   user.fname === form.firstName &&
-      //   user.lname === form.lastName &&
-      //   user.email === form.email &&
-      //   user.password === form.password
-      // ) {
+      if (
+        user.fname === form.firstName &&
+        user.lname === form.lastName &&
+        user.email === form.email &&
+        user.password === form.password
+      ) {
         
-      //   toast.success("Logged in successfully");
-      //   setIsLogedIn(true);
-      //   Navigate('/addproject');
-      //   // navigate('/addproject')
+        toast.success("Logged in successfully");
+        setIsLogedIn(true);
+        Navigate('/addproject');
+        // navigate('/addproject')
        
-      // }
+      }
       // else  { Navigate('/addproject');
 
       // }
