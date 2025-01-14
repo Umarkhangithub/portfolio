@@ -10,7 +10,7 @@ dotenv.config(); // Load environment variables
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const DATABASE_URL = process.env.DATABASE_URL;
+const DATABASE_URL ="mongodb+srv://mohdumarmerndev:merndev@cluster0.f0ezo.mongodb.net/portfolio?retryWrites=true&w=majority"
 
 // Connect to the database
 connectDB(DATABASE_URL);
