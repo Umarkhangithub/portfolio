@@ -12,6 +12,7 @@ const ProjectList = () => {
         const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/projects`);
         setProjects(response.data);
         console.log('projects', response.data)
+        console.log('object', )
       } catch (error) {
         console.error("Error fetching projects", error);
       } finally {

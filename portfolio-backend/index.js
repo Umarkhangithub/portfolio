@@ -10,7 +10,7 @@ dotenv.config(); // Load environment variables
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const DATABASE_URL ="mongodb+srv://mohdumarmerndev:merndev@cluster0.f0ezo.mongodb.net/portfolio?retryWrites=true&w=majority"
+const DATABASE_URL = process.env.DATABASE_URL ||  "mongodb+srv://mohdumarmerndev:merndev@cluster0.f0ezo.mongodb.net/portfolio"
 
 // Connect to the database
 connectDB(DATABASE_URL);
@@ -19,7 +19,6 @@ connectDB(DATABASE_URL);
 
 // Middleware
 app.use(cors());
-app.use(cors({ origin: '*' }));
 app.use(express.json()); // For parsing JSON data
 
 // Serve static files (images)

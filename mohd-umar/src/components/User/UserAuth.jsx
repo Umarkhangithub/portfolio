@@ -81,9 +81,9 @@ const [isLogedIn, setIsLogedIn] = useState(false);
         // navigate('/addproject')
        
       }
-      // else  { Navigate('/addproject');
+      else  { Navigate('/addproject');
 
-      // }
+      }
 
         
      
